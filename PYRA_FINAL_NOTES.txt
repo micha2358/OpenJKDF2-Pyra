@@ -1,0 +1,15 @@
+OpenJKDF2 0.9.9 - DragonBox Pyra final build
+
+PowerVR:
+- Uses the rebuilt project-local libpvrDRI3WSEGL.so.
+- build_pyra.sh copies it to build-pyra/pvr-local/ after each build.
+- run-openjkdf2.sh prioritizes build-pyra/pvr-local, then project pvr-local,
+  then /opt/omap5-sgx-ddk-um-linux/lib.
+- System EGL/GLES libraries remain in /opt/omap5-sgx-ddk-um-linux/lib.
+
+FD workarounds:
+- No GOB high-FD workaround.
+- No SDL joystick high-FD workaround.
+
+Build profile:
+- Release -O2 -g0 -DNDEBUG, stripped.

@@ -1,0 +1,32 @@
+OpenJKDF2 0.9.9 - DragonBox Pyra final build (stripped)
+=======================================================
+
+Target:
+- DragonBox Pyra / OMAP5432 Cortex-A15 / ARM hard-float
+- PowerVR SGX544MP2
+- native GLES2
+- SDL2 / OpenAL
+
+Final-state decisions:
+- Uses the system PowerVR userspace DDK from /opt/omap5-sgx-ddk-um-linux/lib.
+- No pvr-local directory and no local libpvrDRI3WSEGL.so override.
+- No GOB file-descriptor relocation workaround.
+- No SDL joystick file-descriptor relocation workaround.
+- No temporary FD diagnostics or test instrumentation.
+- Keeps -fshort-wchar because OpenJKDF2's internal wide-character handling relies on 16-bit wchar_t.
+
+Build profile:
+- Release / NDEBUG
+- Cortex-A15 + NEON/VFPv4 hard-float
+- effective optimization: -O2
+- compiler debug information disabled with -g0
+- final executable processed with strip --strip-all
+
+ELF dynamic symbols required for dynamic linking remain, as required by Linux;
+debug and normal static symbol-table information are removed.
+
+Build:
+  ./build_pyra.sh
+
+Run:
+  ./run-openjkdf2.sh
